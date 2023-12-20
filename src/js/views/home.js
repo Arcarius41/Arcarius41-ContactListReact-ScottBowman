@@ -9,12 +9,14 @@ export const Home = () => {
 	
 	
 	return(
-	<div className="text-center mt-5">
+	<div className="mt-5">
 	  <div className="container">
-		<ul>
+		<div className="justify-content-right d-flex"><button className="btn btn-success ml-auto">Add New  Contact</button></div>
+		
+		<ul className="list-group">
 			{
 				store.contactList.map((item, index) => {
-					return <li key={index}><ContactCard contact={item}/></li>;
+					return <li className="list-group-item" key={index}><ContactCard contact={item}/></li>;
 				})
 			}
 		</ul>
