@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import {ContactCard} from "../component/contactCard.js";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 
@@ -11,7 +12,7 @@ export const Home = () => {
 	return(
 	<div className="mt-5">
 	  <div className="container">
-		<div className="justify-content-right d-flex"><button className="btn btn-success ml-auto">Add New  Contact</button></div>
+		<div className="justify-content-right d-flex"><Link className="btn btn-success ml-auto" to={"/add-contact"}>Add New  Contact</Link></div>
 		
 		<ul className="list-group">
 			{
