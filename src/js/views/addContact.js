@@ -19,24 +19,24 @@ export const AddContact = (props) => {
 
 	return (
 		<div className="addContactCard">
-			<div className="input-group justify-content-center">
-				<label htmlFor="name">Full Name</label>
-				<input onChange={(e) => setFullName(e.target.value)} type="text" id="name" name="name" placeholder="Full Name" />
+			<div className="w-50 col-4 mx-auto mb-3">
+				<label className="form-label" htmlFor="name">Full Name</label>
+				<input className="form-control" onChange={(e) => setFullName(e.target.value)} type="text" id="name" name="name" placeholder="Full Name" />
 			</div>
-
-			<div className="input-group justify-content-center">
-				<label htmlFor="email">Email</label>
-				<input onChange={(e) => setEmail(e.target.value)} type="text" id="email" name="email" placeholder="Email" />
+			
+			<div className="w-50 col-4 mx-auto mb-3">
+				<label className="form-label" htmlFor="email">Email</label>
+				<input className="form-control" onChange={(e) => setEmail(e.target.value)} type="text" id="email" name="email" placeholder="Email" />
 			</div>
-			<div className="input-group justify-content-center">
-				<label htmlFor="phone">phone</label>
-				<input onChange={(e) => setPhone(e.target.value)} type="text" id="phone" name="phone" placeholder="phone" />
+			<div className="w-50 col-4 mx-auto mb-3">
+				<label className="form-label" htmlFor="phone">phone</label>
+				<input className="form-control" onChange={(e) => setPhone(e.target.value)} type="text" id="phone" name="phone" placeholder="phone" />
 			</div>
-			<div className="input-group justify-content-center">
-				<label htmlFor="address">address</label>
-				<input onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder="address" />
+			<div className="w-50 col-4 mx-auto mb-3">
+				<label className="form-label" htmlFor="address">address</label>
+				<input className="form-control" onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder="address" />
 			</div>
-			<button onClick={ handleClick} className="btn btn-primary form-control">save</button>
+			<button onClick={handleClick} className="btn btn-primary form-control">save</button>
 		</div>
 
 	);

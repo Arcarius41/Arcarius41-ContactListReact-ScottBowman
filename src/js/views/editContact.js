@@ -32,22 +32,22 @@ export const EditContact = (props) => {
 	return (
 		<div className="editContactCard text-center">
 
-			<div className="input-group">
-				<label htmlFor="name">Full Name</label>
-				<input value={fullName} onChange={(e) => setFullName(e.target.value)} type="text" id="name" name="name" placeholder={contact.full_name} />
+			<div className="w-50 col-4 mx-auto mb-3">
+				<label className="form-label" htmlFor="name">Full Name</label>
+				<input className="form-control" value={fullName} onChange={(e) => setFullName(e.target.value)} type="text" id="name" name="name" placeholder={contact.full_name} />
 			</div>
 
-			<div className="input-group">
-				<label htmlFor="email">Email</label>
-				<input value={email} onChange={(e) => setEmail(e.target.value)} type="text" id="email" name="email" placeholder={contact.email} />
+			<div className="w-50 col-4 mx-auto mb-3">
+				<label className="form-label" htmlFor="email">Email</label>
+				<input className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} type="text" id="email" name="email" placeholder={contact.email} />
 			</div>
-			<div className="input-group">
-				<label htmlFor="phone">phone</label>
-				<input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" id="phone" name="phone" placeholder={contact.phone} />
+			<div className="w-50 col-4 mx-auto mb-3">
+				<label className="form-label" htmlFor="phone">phone</label>
+				<input className="form-control" value={phone} onChange={(e) => setPhone(e.target.value)} type="text" id="phone" name="phone" placeholder={contact.phone} />
 			</div>
-			<div className="input-group">
-				<label htmlFor="address">address</label>
-				<input value={address} onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder={contact.address} />
+			<div className="w-50 col-4 mx-auto mb-3">
+				<label className="form-label" htmlFor="address">address</label>
+				<input className="form-control" value={address} onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder={contact.address} />
 			</div>
 			<button onClick={ handleClick} className="btn btn-primary form-control">save</button>
 
