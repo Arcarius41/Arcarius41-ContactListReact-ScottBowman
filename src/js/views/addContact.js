@@ -19,20 +19,20 @@ export const AddContact = (props) => {
 
 	return (
 		<div className="addContactCard">
-			<div className="input-group">
+			<div className="input-group justify-content-center">
 				<label htmlFor="name">Full Name</label>
 				<input onChange={(e) => setFullName(e.target.value)} type="text" id="name" name="name" placeholder="Full Name" />
 			</div>
 
-			<div className="input-group">
+			<div className="input-group justify-content-center">
 				<label htmlFor="email">Email</label>
 				<input onChange={(e) => setEmail(e.target.value)} type="text" id="email" name="email" placeholder="Email" />
 			</div>
-			<div className="input-group">
+			<div className="input-group justify-content-center">
 				<label htmlFor="phone">phone</label>
 				<input onChange={(e) => setPhone(e.target.value)} type="text" id="phone" name="phone" placeholder="phone" />
 			</div>
-			<div className="input-group">
+			<div className="input-group justify-content-center">
 				<label htmlFor="address">address</label>
 				<input onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder="address" />
 			</div>
