@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
@@ -10,27 +10,33 @@ export const AddContact = (props) => {
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [address, setAddress] = useState("");
+	const navigate = useNavigate();
+
+	const handleClick = async () => {
+		await actions.addContact(fullName, email, phone, address);
+		navigate("/");
+	};
 
 	return (
-		<div className="jumbotron">
+		<div className="addContactCard">
 			<div className="input-group">
-				<label for="name">Full Name</label>
+				<label htmlFor="name">Full Name</label>
 				<input onChange={(e) => setFullName(e.target.value)} type="text" id="name" name="name" placeholder="Full Name" />
 			</div>
 
 			<div className="input-group">
-				<label for="email">Email</label>
+				<label htmlFor="email">Email</label>
 				<input onChange={(e) => setEmail(e.target.value)} type="text" id="email" name="email" placeholder="Email" />
 			</div>
 			<div className="input-group">
-				<label for="phone">phone</label>
+				<label htmlFor="phone">phone</label>
 				<input onChange={(e) => setPhone(e.target.value)} type="text" id="phone" name="phone" placeholder="phone" />
 			</div>
 			<div className="input-group">
-				<label for="address">address</label>
+				<label htmlFor="address">address</label>
 				<input onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder="address" />
 			</div>
-			<Link to="/" onClick={() => actions.addContact(fullName, email, phone, address)} className="btn btn-primary form-control">save</Link>
+			<button onClick={ handleClick} className="btn btn-primary form-control">save</button>
 		</div>
 
 	);

@@ -1,12 +1,55 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const AddContact = props => {
+export const EditContact = (props) => {
 	const { store, actions } = useContext(Context);
-	const params = useParams();
+	const{ id } = useParams();
+	const [fullName, setFullName] = useState("");
+	const [email, setEmail] = useState("");
+	const [phone, setPhone] = useState("");
+	const [address, setAddress] = useState("");
+	const navigate = useNavigate();
+	const [contact, setContact] = useState({});
+
+	const handleClick = async () => {
+		await actions.updateContact(fullName, email, phone, address, id);
+		navigate("/");
+		console.log(store);
+	};
+
+	useEffect(() => {
+		let contacts=store.contactList;
+		console.log(contacts);
+		let contact=contacts.find((item) => item.id === parseInt(id));
+		setContact(contact);
+		setFullName(contact.full_name);
+		setEmail(contact.email);
+		setPhone(contact.phone);
+		setAddress(contact.address);
+	}, []);
+
 	return (
-		<div className="jumbotron">
+		<div className="editContactCard text-center">
+
+			<div className="input-group">
+				<label htmlFor="name">Full Name</label>
+				<input value={fullName} onChange={(e) => setFullName(e.target.value)} type="text" id="name" name="name" placeholder={contact.full_name} />
+			</div>
+
+			<div className="input-group">
+				<label htmlFor="email">Email</label>
+				<input value={email} onChange={(e) => setEmail(e.target.value)} type="text" id="email" name="email" placeholder={contact.email} />
+			</div>
+			<div className="input-group">
+				<label htmlFor="phone">phone</label>
+				<input value={phone} onChange={(e) => setPhone(e.target.value)} type="text" id="phone" name="phone" placeholder={contact.phone} />
+			</div>
+			<div className="input-group">
+				<label htmlFor="address">address</label>
+				<input value={address} onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder={contact.address} />
+			</div>
+			<button onClick={ handleClick} className="btn btn-primary form-control">save</button>
 
 		</div>
 	);

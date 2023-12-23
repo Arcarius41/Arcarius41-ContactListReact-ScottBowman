@@ -70,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				});
 				const data = await response.json();
-				setStore({ contactList: [...store.contactList, data] });
+				
 			},
 			deleteContact: async (contactId) => {
 				const store = getStore();
