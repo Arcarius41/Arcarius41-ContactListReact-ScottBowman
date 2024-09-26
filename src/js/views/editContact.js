@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 
 export const EditContact = (props) => {
 	const { store, actions } = useContext(Context);
-	const{ id } = useParams();
+	const { id } = useParams();
 	const [fullName, setFullName] = useState("");
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
@@ -19,11 +19,11 @@ export const EditContact = (props) => {
 	};
 
 	useEffect(() => {
-		let contacts=store.contactList;
+		let contacts = store.contactList;
 		console.log(contacts);
-		let contact=contacts.find((item) => item.id === parseInt(id));
+		let contact = contacts.find((item) => item.id === parseInt(id));
 		setContact(contact);
-		setFullName(contact.full_name);
+		setFullName(contact.name);
 		setEmail(contact.email);
 		setPhone(contact.phone);
 		setAddress(contact.address);
@@ -34,7 +34,7 @@ export const EditContact = (props) => {
 
 			<div className="w-50 col-4 mx-auto mb-3">
 				<label className="form-label" htmlFor="name">Full Name</label>
-				<input className="form-control" value={fullName} onChange={(e) => setFullName(e.target.value)} type="text" id="name" name="name" placeholder={contact.full_name} />
+				<input className="form-control" value={fullName} onChange={(e) => setFullName(e.target.value)} type="text" id="name" name="name" placeholder={contact.name} />
 			</div>
 
 			<div className="w-50 col-4 mx-auto mb-3">
@@ -49,7 +49,7 @@ export const EditContact = (props) => {
 				<label className="form-label" htmlFor="address">address</label>
 				<input className="form-control" value={address} onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder={contact.address} />
 			</div>
-			<button onClick={ handleClick} className="btn btn-primary form-control">save</button>
+			<button onClick={handleClick} className="btn btn-primary form-control">save</button>
 
 		</div>
 	);

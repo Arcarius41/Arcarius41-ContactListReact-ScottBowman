@@ -32,56 +32,65 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			getContactList: async () => {
 				const store = getStore();
-				const response = await fetch("https://playground.4geeks.com/apis/fake/contact/agenda/Scotts_blahblah");
-				const data = await response.json();
-				setStore({ contactList:data });
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/Arcarius41");
+				if (response.ok) {
+					const data = await response.json();
+					setStore({ contactList: data.contacts });
+				} else {
+					const response = await fetch(
+						"https://playground.4geeks.com/contact/agendas/Arcarius41",
+						{ method: "POST" }
+					);
+				}
 			},
 			addContact: async (full_name, email, phone, address) => {
 				const store = getStore();
-				const response = await fetch("https://playground.4geeks.com/apis/fake/contact/", {
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/Arcarius41/contacts", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						full_name: full_name,
+						name: full_name,
 						email: email,
-						agenda_slug: "Scotts_blahblah",
 						address: address,
 						phone: phone
 					})
 				});
-				if (response.status==201)	{
+				if (response.ok) {
 					getActions().getContactList();
-				}		},
+				}
+			},
 			updateContact: async (full_name, email, phone, address, contactId) => {
 				const store = getStore();
-				const response = await fetch("https://playground.4geeks.com/apis/fake/contact/" + contactId, {
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/Arcarius41/contacts/" + contactId, {
 					method: "PUT",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						full_name: full_name,
+						name: full_name,
 						email: email,
-						agenda_slug: "Scotts_blahblah",
 						address: address,
 						phone: phone
 					})
 				});
 				const data = await response.json();
-				
+				if (response.ok) {
+					getActions().getContactList();
+				}
 			},
 			deleteContact: async (contactId) => {
 				const store = getStore();
-				const response = await fetch("https://playground.4geeks.com/apis/fake/contact/" + contactId, {
+				const response = await fetch("https://playground.4geeks.com/contact/agendas/Arcarius41/contacts/" + contactId, {
 					method: "DELETE",
 					headers: {
 						"Content-Type": "application/json"
 					}
 				});
-				const data = await response.json();
-				setStore({ contactList: store.contactList.filter((contact) => contact.id !== contactId) });
+				if (response.ok) {
+					getActions().getContactList();
+				}
 			}
 		}
 	};
