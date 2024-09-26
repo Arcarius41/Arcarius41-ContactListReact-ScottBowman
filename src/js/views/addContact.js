@@ -36,7 +36,10 @@ export const AddContact = (props) => {
 				<label className="form-label" htmlFor="address">address</label>
 				<input className="form-control" onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder="address" />
 			</div>
-			<button onClick={handleClick} className="btn btn-primary form-control">save</button>
+			<div className="text-center">
+    <button onClick={handleClick} className="btn btn-primary" style={{ width: "auto" }}>Save</button>
+</div>
+
 		</div>
 
 	);

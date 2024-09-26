@@ -49,7 +49,10 @@ export const EditContact = (props) => {
 				<label className="form-label" htmlFor="address">address</label>
 				<input className="form-control" value={address} onChange={(e) => setAddress(e.target.value)} type="text" id="address" name="address" placeholder={contact.address} />
 			</div>
-			<button onClick={handleClick} className="btn btn-primary form-control">save</button>
+			<div className="text-center">
+    <button onClick={handleClick} className="btn btn-primary" style={{ width: "auto" }}>Save</button>
+</div>
+
 
 		</div>
 	);
